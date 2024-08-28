@@ -99,9 +99,32 @@ async function getPopular(page = 1) {
     }
 }
 
+async function getMovie(id) {
+
+    let URI = `${base}/movie/${id}`;
+
+    try {
+
+        let response = await axios.get(URI, {
+            params: {
+                language: 'en-US'
+            },
+            headers: headers
+        })
+        return response.data;
+
+    } catch (error) {
+
+        console.log(error);
+        return [];
+
+    }
+}
+
 export {
     getTrending,
     getUpcoming,
     getTopRated,
-    getPopular
+    getPopular,
+    getMovie
 }

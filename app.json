@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Movies",
-    "slug": "Movies",
+    "slug": "movies",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.ranitjana.movies"
     },
     "web": {
       "bundler": "metro",
@@ -31,6 +32,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "467e324c-9505-41c0-83bf-53af835e84d7"
+      }
+    },
+    "owner": "ranitjana"
   }
 }
