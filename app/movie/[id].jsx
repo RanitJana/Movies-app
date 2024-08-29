@@ -95,7 +95,7 @@ const MovieOne = () => {
                             <Text style={styles.listDescriptionText}>Similar movies</Text>
                             <Text style={styles.showAll}>show all</Text>
                         </View>
-                        <ScrollView horizontal style={{ marginLeft: -10 }}>
+                        <ScrollView horizontal showsVerticalScrollIndicator={false} style={{ marginLeft: -10 }}>
                             <ShowComponent info={[loading, similar.results]} />
                         </ScrollView>
                     </View>
