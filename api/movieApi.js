@@ -98,7 +98,6 @@ async function getPopular(page = 1) {
 
     }
 }
-
 async function getMovie(id) {
 
     let URI = `${base}/movie/${id}`;
@@ -121,10 +120,34 @@ async function getMovie(id) {
     }
 }
 
+async function getSimilarMovies(id, page = 1) {
+
+    let URI = `${base}/movie/${id}/similar`;
+
+    try {
+
+        let response = await axios.get(URI, {
+            params: {
+                language: 'en-US',
+                page: page
+            },
+            headers: headers
+        })
+        return response.data;
+
+    } catch (error) {
+
+        console.log(error);
+        return [];
+
+    }
+}
+
 export {
     getTrending,
     getUpcoming,
     getTopRated,
     getPopular,
-    getMovie
+    getMovie,
+    getSimilarMovies
 }

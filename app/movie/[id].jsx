@@ -1,10 +1,11 @@
 import { Dimensions, View, Text, Image, ScrollView, StyleSheet, ActivityIndicator, Pressable } from 'react-native';
-import { router, useLocalSearchParams } from 'expo-router';
-import { getMovie } from "@/api/movieApi.js";
+import { useLocalSearchParams } from 'expo-router';
+import { getMovie, getSimilarMovies } from "@/api/movieApi.js";
 import { getPersons } from "@/api/peopleApi.js"
 import { useEffect, useState } from 'react';
 import { Colors } from '@/constants/Colors.js';
 import { LinearGradient } from 'expo-linear-gradient';
+import ShowComponent from '@/hooks/loading.hooks.jsx';
 import People from '@/components/People.jsx';
 import Entypo from '@expo/vector-icons/Entypo';
 const MovieOne = () => {
@@ -12,6 +13,7 @@ const MovieOne = () => {
     const { id } = useLocalSearchParams();
     const [movie, setMovie] = useState(null);
     const [people, setPeople] = useState(null);
+    const [similar, setSilimar] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -22,10 +24,13 @@ const MovieOne = () => {
 
                 let ans = await getMovie(id);
                 setMovie(ans);
-                console.log(ans);
 
                 ans = await getPersons(id);
                 setPeople(ans);
+
+                ans = await getSimilarMovies(id);
+                setSilimar(ans);
+                console.log(ans);
 
                 setLoading(false);
             } catch (err) {
@@ -56,8 +61,8 @@ const MovieOne = () => {
             <ScrollView showsVerticalScrollIndicator={false}>
                 <Image source={{ uri: `https://image.tmdb.org/t/p/w500${movie?.poster_path}` }} style={{ height: height / 1.5, width: width }} />
                 <LinearGradient
-                    colors={['transparent', 'rgba(23,23,23,2)', Colors.dark.background]}
-                    style={{ width, height: height*1.3, position: 'absolute', bottom: 0 }}
+                    colors={['transparent', 'rgba(23,23,23,1)', Colors.dark.background]}
+                    style={{ width, height: height * 1.3, position: 'absolute', bottom: height / 2.8 }}
                 />
                 <View style={{ padding: 10, marginTop: -height / 4 }}>
                     <Text style={styles.title}>{movie?.title}</Text>
@@ -85,6 +90,15 @@ const MovieOne = () => {
                             <People key={index} people={{ person }} />
                         ))}
                     </ScrollView>
+                    <View>
+                        <View style={styles.parentShowAll}>
+                            <Text style={styles.listDescriptionText}>Similar movies</Text>
+                            <Text style={styles.showAll}>show all</Text>
+                        </View>
+                        <ScrollView horizontal style={{ marginLeft: -10 }}>
+                            <ShowComponent info={[loading, similar.results]} />
+                        </ScrollView>
+                    </View>
                 </View >
             </ScrollView >
         </View >
@@ -95,6 +109,21 @@ const MovieOne = () => {
 export default MovieOne;
 
 const styles = StyleSheet.create({
+    showAll: {
+        color: 'orange',
+    },
+    listDescriptionText: {
+        color: 'white',
+        fontSize: 20,
+        fontWeight: '900',
+    },
+    parentShowAll: {
+        paddingVertical: 10,
+        paddingTop: 30,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+    },
     center: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -117,6 +146,7 @@ const styles = StyleSheet.create({
     },
     genreContainer: {
         flexDirection: 'row',
+        flexWrap: 'wrap',
         justifyContent: 'center',
         alignItems: 'center',
         gap: 5,
