@@ -5,7 +5,7 @@ import { getPersons } from "@/api/peopleApi.js"
 import { useEffect, useState } from 'react';
 import { Colors } from '@/constants/Colors.js';
 import { LinearGradient } from 'expo-linear-gradient';
-import People from '../../components/People.jsx';
+import People from '@/components/People.jsx';
 import Entypo from '@expo/vector-icons/Entypo';
 const MovieOne = () => {
     const { width, height } = Dimensions.get('window');
@@ -56,11 +56,12 @@ const MovieOne = () => {
             <ScrollView showsVerticalScrollIndicator={false}>
                 <Image source={{ uri: `https://image.tmdb.org/t/p/w500${movie?.poster_path}` }} style={{ height: height / 1.5, width: width }} />
                 <LinearGradient
-                    colors={['transparent', 'rgba(23,23,23,1)', Colors.dark.background]}
-                    style={{ width, height: height, position: 'absolute', bottom: 0 }}
+                    colors={['transparent', 'rgba(23,23,23,2)', Colors.dark.background]}
+                    style={{ width, height: height*1.3, position: 'absolute', bottom: 0 }}
                 />
                 <View style={{ padding: 10, marginTop: -height / 4 }}>
                     <Text style={styles.title}>{movie?.title}</Text>
+                    <Text style={{ color: 'white', textAlign: 'center', marginBottom: 10, }}>{movie?.tagline}</Text>
                     <View style={styles.infoContainer}>
                         <Text style={styles.infoText}>{movie?.status}</Text>
                         <Entypo name="dot-single" size={24} color="gray" />
@@ -103,7 +104,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: 'white',
         textAlign: 'center',
-        marginBottom: 10,
     },
     infoContainer: {
         flexDirection: 'row',

@@ -39,7 +39,7 @@ export default function Index() {
         <Text style={styles.listDescriptionText}>{title}</Text>
         {showAll && <Text style={styles.showAll}>show all</Text>}
       </View>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.cardContainer}>
+      <ScrollView style={{ marginLeft: -20 }} horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.cardContainer}>
         <ShowComponent info={[data.fetching, data.movies]} />
       </ScrollView>
     </View>

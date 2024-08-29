@@ -18,7 +18,7 @@ const People = ({ people }) => {
                     </View>
 
             }
-            <Text numberOfLines={1} style={{ color: 'white', maxWidth: 70, textAlign: 'center' }}>{person?.original_name}</Text>
+            <Text numberOfLines={1} style={{ color: 'white', maxWidth: 70, textAlign: 'center', fontWeight: 'bold' }}>{person?.original_name}</Text>
             <Text numberOfLines={1} style={{ color: 'white', maxWidth: 70, textAlign: 'center' }}>{person?.character}</Text>
         </Pressable>
     )
