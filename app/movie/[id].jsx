@@ -24,10 +24,10 @@ const MovieOne = () => {
 
                 let ans = await getMovie(id);
                 setMovie(ans);
+                console.log(ans);
 
                 ans = await getPersons(id);
                 setPeople(ans);
-                console.log(ans);
 
                 ans = await getSimilarMovies(id);
                 setSilimar(ans);
@@ -62,7 +62,7 @@ const MovieOne = () => {
                 <Image source={{ uri: `https://image.tmdb.org/t/p/w500${movie?.poster_path}` }} style={{ height: height / 1.5, width: width }} />
                 <LinearGradient
                     colors={['transparent', 'rgba(23,23,23,1)', Colors.dark.background]}
-                    style={{ width, height: height * 1.3, position: 'absolute', bottom: height / 2.8 }}
+                    style={{ width, height: height * 1.6, position: 'absolute', bottom: height / 2.8 }}
                 />
                 <View style={{ padding: 10, marginTop: -height / 4 }}>
                     <Text style={styles.title}>{movie?.title}</Text>
@@ -83,6 +83,7 @@ const MovieOne = () => {
                         <Text style={{ paddingHorizontal: 10, borderTopLeftRadius: 3, borderBottomLeftRadius: 3, paddingVertical: 3, color: 'white', fontWeight: 'bold', backgroundColor: 'orangered' }}>Ratings</Text>
                         <Text style={{ paddingHorizontal: 10, paddingVertical: 3, borderTopRightRadius: 3, borderBottomRightRadius: 3, color: 'white', fontWeight: 'bold', backgroundColor: 'green' }}>{Number(movie?.vote_average | 0).toPrecision(2)}</Text>
                     </View>
+                    <Text style={{ paddingVertical: 20, marginTop: 10, fontSize: 20, fontWeight: 'bold', color: 'white' }}>Overview</Text>
                     <Text style={styles.overview}>{movie?.overview}</Text>
                     <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 20, marginBottom: 20 }}>Top Casts</Text>
                     <ScrollView showsHorizontalScrollIndicator={false} horizontal style={{ marginVertical: 10 }}>
@@ -162,7 +163,7 @@ const styles = StyleSheet.create({
     },
     overview: {
         color: 'gray',
-        paddingVertical: 40,
+        paddingBottom: 40,
         fontSize: 16,
     },
 });
