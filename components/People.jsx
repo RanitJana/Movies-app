@@ -4,11 +4,11 @@ import React from 'react'
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 const People = ({ people }) => {
-    person = people.person;
+    let person = people.person;
 
     const router = useRouter();
     return (
-        <Pressable onPress={() => router.push(`/person/${person?.credit_id}`)} style={{ marginHorizontal: 10 }}>
+        <Pressable onPress={() => router.push(`/person/${person?.id}`)} style={{ marginHorizontal: 10 }}>
             {
                 person?.profile_path ?
                     <Image source={{ uri: `https://image.tmdb.org/t/p/w500${person?.profile_path}` }} style={styles.image} />

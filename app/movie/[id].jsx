@@ -1,4 +1,4 @@
-import { Dimensions, View, Text, Image, ScrollView, StyleSheet, ActivityIndicator, Pressable } from 'react-native';
+import { Dimensions, View, Text, Image, ScrollView, StyleSheet, ActivityIndicator } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import { getMovie, getSimilarMovies } from "@/api/movieApi.js";
 import { getPersons } from "@/api/peopleApi.js"
@@ -27,10 +27,10 @@ const MovieOne = () => {
 
                 ans = await getPersons(id);
                 setPeople(ans);
+                console.log(ans);
 
                 ans = await getSimilarMovies(id);
                 setSilimar(ans);
-                console.log(ans);
 
                 setLoading(false);
             } catch (err) {
@@ -66,7 +66,7 @@ const MovieOne = () => {
                 />
                 <View style={{ padding: 10, marginTop: -height / 4 }}>
                     <Text style={styles.title}>{movie?.title}</Text>
-                    <Text style={{ color: 'white', textAlign: 'center', marginBottom: 10, }}>{movie?.tagline}</Text>
+                    <Text style={{ color: 'gray', textAlign: 'center', marginBottom: 10, }}>{movie?.tagline}</Text>
                     <View style={styles.infoContainer}>
                         <Text style={styles.infoText}>{movie?.status}</Text>
                         <Entypo name="dot-single" size={24} color="gray" />
@@ -90,7 +90,7 @@ const MovieOne = () => {
                             <People key={index} people={{ person }} />
                         ))}
                     </ScrollView>
-                    <View>
+                    <View style={{ marginBottom: 20 }}>
                         <View style={styles.parentShowAll}>
                             <Text style={styles.listDescriptionText}>Similar movies</Text>
                             <Text style={styles.showAll}>show all</Text>
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
         paddingVertical: 5
     },
     overview: {
-        color: 'white',
+        color: 'gray',
         paddingVertical: 40,
         fontSize: 16,
     },

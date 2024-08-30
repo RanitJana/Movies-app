@@ -9,7 +9,7 @@ let headers = {
 
 async function getTrending() {
 
-    let URI = `${base}/trending/movie/week`;
+    let URI = `${base}/trending/movie/day`;
 
     try {
 

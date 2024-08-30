@@ -10,7 +10,7 @@ const ShowComponent = ({ info }) => {
                 <MovieSkeleton key={index} />
             ))
             :
-            info[1].map((movie, index) => {
+            info[1]?.map((movie, index) => {
                 return <MovieCard movie={movie} key={index} />;
             })
     )

@@ -19,6 +19,7 @@ const getMonth = {
 }
 
 function getDate(time) {
+    if (!time || time.length == 0) return null;
     let [year, month, day] = time.split('-');
 
     month = Number(month);

@@ -7,6 +7,21 @@ import { Colors } from '../constants/Colors.js';
 import { getPopular, getTopRated, getTrending, getUpcoming } from '../api/movieApi.js';
 import ShowComponent from '../hooks/loading.hooks.jsx';
 
+const renderCategory = (title, showAll, data) => (
+
+  <View>
+    <View style={styles.parentShowAll}>
+      <Text style={styles.listDescriptionText}>{title}</Text>
+      {showAll && <Text style={styles.showAll}>show all</Text>}
+    </View>
+    <ScrollView style={{ marginLeft: -20 }} horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.cardContainer}>
+      <ShowComponent info={[data.fetching, data.movies]} />
+    </ScrollView>
+  </View>
+);
+
+export { renderCategory }
+
 export default function Index() {
   const [data, setData] = useState({
     trending: { movies: [], fetching: true },
@@ -32,18 +47,6 @@ export default function Index() {
 
     fetchData();
   }, []);
-
-  const renderCategory = (title, showAll, data) => (
-    <View>
-      <View style={styles.parentShowAll}>
-        <Text style={styles.listDescriptionText}>{title}</Text>
-        {showAll && <Text style={styles.showAll}>show all</Text>}
-      </View>
-      <ScrollView style={{ marginLeft: -20 }} horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.cardContainer}>
-        <ShowComponent info={[data.fetching, data.movies]} />
-      </ScrollView>
-    </View>
-  );
 
   return (
     <SafeAreaView style={StyleSheet.compose({ flex: 1, padding: 10, paddingHorizontal: 20 }, styles.parent)}>

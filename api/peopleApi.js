@@ -28,6 +28,51 @@ async function getPersons(id) {
 
     }
 }
+
+async function getPersonInfo(id) {
+    let URI = `${base}/person/${id}`;
+
+    try {
+
+        let response = await axios.get(URI, {
+            params: {
+                language: 'en-US'
+            },
+            headers: headers
+        })
+        return response.data;
+
+    } catch (error) {
+
+        console.log(error);
+        return [];
+
+    }
+}
+
+async function getPersonMovies(id) {
+
+    let URI = `${base}/person/${id}/movie_credits`;
+
+    try {
+
+        let response = await axios.get(URI, {
+            params: {
+                language: 'en-US'
+            },
+            headers: headers
+        })
+        return response.data;
+
+    } catch (error) {
+
+        console.log(error);
+        return [];
+
+    }
+}
 export {
-    getPersons
+    getPersons,
+    getPersonInfo,
+    getPersonMovies
 }
