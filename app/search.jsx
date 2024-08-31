@@ -128,6 +128,12 @@ const Search = () => {
                         <Text style={{ color: 'gray', fontSize: 15 }}>No result is found</Text>
                     </View>
                 )}
+                {!isLoading && !isLetter && movie.length === 0 && (
+                    <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }}>
+                        <Image source={require('../assets/images/search-results.png')} style={{ width: 100, height: 100 }} />
+                        <Text style={{ color: 'gray', fontSize: 15 }}>Search result will apeear here</Text>
+                    </View>
+                )}
             </View>
         </SafeAreaView>
     );

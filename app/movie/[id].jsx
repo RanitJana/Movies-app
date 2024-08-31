@@ -1,5 +1,5 @@
-import { Dimensions, View, Text, Image, ScrollView, StyleSheet, ActivityIndicator } from 'react-native';
-import { useLocalSearchParams } from 'expo-router';
+import { Dimensions, View, Text, Image, ScrollView, StyleSheet, ActivityIndicator, Pressable } from 'react-native';
+import { router, useLocalSearchParams } from 'expo-router';
 import { getMovie, getSimilarMovies } from "@/api/movieApi.js";
 import { getPersons } from "@/api/peopleApi.js"
 import { useEffect, useState } from 'react';
@@ -24,7 +24,6 @@ const MovieOne = () => {
 
                 let ans = await getMovie(id);
                 setMovie(ans);
-                console.log(ans);
 
                 ans = await getPersons(id);
                 setPeople(ans);
@@ -97,7 +96,9 @@ const MovieOne = () => {
                             (
                                 <View style={styles.parentShowAll}>
                                     <Text style={styles.listDescriptionText}>Similar movies</Text>
-                                    <Text style={styles.showAll}>show all</Text>
+                                    <Pressable onPress={()=>router.push(`/all/${id}`)}>
+                                        <Text style={styles.showAll}>show all</Text>
+                                    </Pressable>
                                 </View>
                             )
                         }
