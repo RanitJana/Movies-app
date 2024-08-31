@@ -115,7 +115,7 @@ async function getMovie(id) {
     } catch (error) {
 
         console.log(error);
-        return [];
+        return {};
 
     }
 }
@@ -143,7 +143,7 @@ async function getSimilarMovies(id, page = 1) {
     }
 }
 
-async function searchMovie(keyword) {
+async function searchMovie(keyword, page = 1) {
 
     let URI = `${base}/search/keyword`;
 

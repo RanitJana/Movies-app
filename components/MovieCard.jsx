@@ -46,8 +46,8 @@ const MovieCard = ({ movie }) => {
             </Pressable>
             <Text numberOfLines={1} style={MovieBox.title}>{movie?.title}</Text>
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 2 }}>
-                <Text style={MovieBox.date}>{getDate(movie.release_date)}</Text>
-                <Text style={MovieBox.ratings}>{Number(movie.vote_average).toPrecision(2)}</Text>
+                <Text style={MovieBox.date}>{getDate(movie?.release_date)}</Text>
+                <Text style={MovieBox.ratings}>{Number(movie?.vote_average).toPrecision(2)}</Text>
             </View>
         </View >
     )
