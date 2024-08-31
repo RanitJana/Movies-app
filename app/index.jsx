@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons from '@expo/vector-icons/Ionicons';
-
+import { useRouter } from 'expo-router';
 import { Colors } from '../constants/Colors.js';
 import { getPopular, getTopRated, getTrending, getUpcoming } from '../api/movieApi.js';
 import ShowComponent from '../hooks/loading.hooks.jsx';
@@ -23,6 +23,9 @@ const renderCategory = (title, showAll, data) => (
 export { renderCategory }
 
 export default function Index() {
+
+  const router = useRouter();
+
   const [data, setData] = useState({
     trending: { movies: [], fetching: true },
     upcoming: { movies: [], fetching: true },
@@ -56,7 +59,7 @@ export default function Index() {
           <Text style={{ color: Colors.dark.text, fontSize: 30, fontWeight: 'bold', color: 'orange' }}>M</Text>
           <Text style={{ color: Colors.dark.text, fontSize: 30, fontWeight: 'bold' }}>ovies</Text>
         </View>
-        <Ionicons name="search-outline" size={30} color={Colors.dark.text} />
+        <Ionicons name="search-outline" size={30} color={Colors.dark.text} onPress={() => router.push('/search')} />
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         {renderCategory('Trending', false, data.trending)}

@@ -143,11 +143,35 @@ async function getSimilarMovies(id, page = 1) {
     }
 }
 
+async function searchMovie(keyword) {
+
+    let URI = `${base}/search/keyword`;
+
+    try {
+
+        let response = await axios.get(URI, {
+            params: {
+                query: keyword,
+                page: page
+            },
+            headers: headers
+        })
+        return response.data;
+
+    } catch (error) {
+
+        console.log(error);
+        return [];
+
+    }
+}
+
 export {
     getTrending,
     getUpcoming,
     getTopRated,
     getPopular,
     getMovie,
-    getSimilarMovies
+    getSimilarMovies,
+    searchMovie
 }
