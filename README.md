@@ -8,20 +8,19 @@ This is an Android movie app that provides details about movies. It fetches data
 
 Preview images
 
-<img src="./assets/images/preview/1.jpg" alt="App Screenshot" width="400"/>
-<img src="./assets/images/preview/2.jpg" alt="App Screenshot" width="400"/>
-<img src="./assets/images/preview/3.jpg" alt="App Screenshot" width="400"/>
-<img src="./assets/images/preview/4.jpg" alt="App Screenshot" width="400"/>
-<img src="./assets/images/preview/5.jpg" alt="App Screenshot" width="400"/>
-<img src="./assets/images/preview/6.jpg" alt="App Screenshot" width="400"/>
-<img src="./assets/images/preview/7.jpg" alt="App Screenshot" width="400"/>
-<img src="./assets/images/preview/8.jpg" alt="App Screenshot" width="400"/>
-<img src="./assets/images/preview/9.jpg" alt="App Screenshot" width="400"/>
-<img src="./assets/images/preview/10.jpg" alt="App Screenshot" width="400"/>
-<img src="./assets/images/preview/11.jpg" alt="App Screenshot" width="400"/>
-<img src="./assets/images/preview/12.jpg" alt="App Screenshot" width="400"/>
-<img src="./assets/images/preview/13.jpg" alt="App Screenshot" width="400"/>
-<img src="./assets/images/preview/14.jpg" alt="App Screenshot" width="400"/>
+<img src="./assets/images/preview/1.jpg" alt="App Screenshot" width="200"/><img src="./assets/images/preview/2.jpg" alt="App Screenshot" width="200"/>
+<img src="./assets/images/preview/3.jpg" alt="App Screenshot" width="200"/>
+<img src="./assets/images/preview/4.jpg" alt="App Screenshot" width="200"/>
+<img src="./assets/images/preview/5.jpg" alt="App Screenshot" width="200"/>
+<img src="./assets/images/preview/6.jpg" alt="App Screenshot" width="200"/>
+<img src="./assets/images/preview/7.jpg" alt="App Screenshot" width="200"/>
+<img src="./assets/images/preview/8.jpg" alt="App Screenshot" width="200"/>
+<img src="./assets/images/preview/9.jpg" alt="App Screenshot" width="200"/>
+<img src="./assets/images/preview/10.jpg" alt="App Screenshot" width="200"/>
+<img src="./assets/images/preview/11.jpg" alt="App Screenshot" width="200"/>
+<img src="./assets/images/preview/12.jpg" alt="App Screenshot" width="200"/>
+<img src="./assets/images/preview/13.jpg" alt="App Screenshot" width="200"/>
+<img src="./assets/images/preview/14.jpg" alt="App Screenshot" width="200"/>
 
 
 ## Getting Started
