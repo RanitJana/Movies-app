@@ -28,7 +28,7 @@ Download from below
 
 <img src="./assets/images/preview/download.png" alt="App Screenshot" width="200"/>
 
-<a href="https://expo.dev/accounts/ranitjana/projects/movies/builds/069978c6-5297-4cb1-b673-470930b22109">Download<a>
+<a href="https://expo.dev/accounts/ranitjana/projects/movies/builds/46cd55bf-676a-4923-b058-24b2e1114f75">Download<a>
 
 ## Getting Started
 
