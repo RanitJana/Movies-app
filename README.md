@@ -4,6 +4,26 @@
 
 This is an Android movie app that provides details about movies. It fetches data from the TMDB (The Movie Database) API and displays movie information, including similar movies and cast details.
 
+## Preview
+
+Preview images
+
+![App Screenshot](./assets/images/preview/1.jpg)
+![App Screenshot](./assets/images/preview/2.jpg)
+![App Screenshot](./assets/images/preview/3.jpg)
+![App Screenshot](./assets/images/preview/4.jpg)
+![App Screenshot](./assets/images/preview/5.jpg)
+![App Screenshot](./assets/images/preview/6.jpg)
+![App Screenshot](./assets/images/preview/7.jpg)
+![App Screenshot](./assets/images/preview/8.jpg)
+![App Screenshot](./assets/images/preview/9.jpg)
+![App Screenshot](./assets/images/preview/10.jpg)
+![App Screenshot](./assets/images/preview/11.jpg)
+![App Screenshot](./assets/images/preview/12.jpg)
+![App Screenshot](./assets/images/preview/13.jpg)
+![App Screenshot](./assets/images/preview/14.jpg)
+![App Screenshot](./assets/images/preview/)
+
 ## Getting Started
 
 To set up and run this project locally, follow these steps:
