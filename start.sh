@@ -1,3 +1,3 @@
 clear
 
-npm run format && npm start
+npm install && npm run format && npm start
