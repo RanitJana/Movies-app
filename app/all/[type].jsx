@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   View,
   Text,
@@ -9,7 +9,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import React from 'react';
 import { Colors } from '@/constants/Colors.js';
-import { useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams, useNavigation } from 'expo-router';
 import MovieCard from '../../components/MovieCard';
 import {
   getUpcoming,
@@ -18,8 +18,15 @@ import {
   getSimilarMovies,
 } from '../../api/movieApi';
 
-const Type = ({ id }) => {
+const Type = () => {
   let { type } = useLocalSearchParams();
+  const navigatin = useNavigation();
+
+  useEffect(() => {
+    navigatin.setOptions({
+      headerTitle: Number.isInteger(+type) ? 'Similar movies' : type,
+    });
+  }, []);
 
   const [isAdditionalLoading, setAdditionalLoading] = useState(false);
   const [movie, setMovie] = useState([]);
@@ -52,30 +59,19 @@ const Type = ({ id }) => {
   };
 
   return (
-    <SafeAreaView style={[{ flex: 1, paddingVertical: 20 }, styles.parent]}>
-      <View style={{ paddingHorizontal: 20, paddingBottom: 40 }}>
-        <View>
-          <Text
-            style={{
-              color: 'white',
-              fontSize: 25,
-              fontWeight: 'bold',
-              marginBottom: 10,
-            }}
-          >
-            {Number.isInteger(+type) ? 'Similar movies' : type}
-          </Text>
-        </View>
+    <SafeAreaView style={[{ flex: 1, paddingBottom: 20 }, styles.parent]}>
+      <View>
         <FlatList
           data={movie}
           renderItem={({ item }) => <MovieCard movie={item} />}
           keyExtractor={(_, index) => index}
+          numColumns={2}
           contentContainerStyle={{
             alignItems: 'center',
             gap: 20,
-            paddingBottom: 20,
+            paddingBottom: 30,
           }}
-          numColumns={2}
+          style={{ paddingTop: 20, marginTop: -35 }}
           onEndReached={loadMoreMovies}
           onEndReachedThreshold={0.5}
           ListFooterComponent={
@@ -96,23 +92,5 @@ const styles = StyleSheet.create({
   parent: {
     backgroundColor: Colors.dark.background,
     color: Colors.dark.text,
-  },
-  showAll: {
-    color: 'orange',
-  },
-  listDescriptionText: {
-    color: 'white',
-    fontSize: 20,
-    fontWeight: '900',
-  },
-  parentShowAll: {
-    paddingVertical: 10,
-    paddingTop: 30,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  cardContainer: {
-    paddingHorizontal: 10,
   },
 });

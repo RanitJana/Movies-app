@@ -38,10 +38,9 @@ const MovieOne = () => {
 
         ans = await getPersonMovies(id);
         setMovies([...ans.cast, ...ans.crew]);
-
-        setLoading(false);
       } catch (err) {
         setError('Failed to fetch details');
+      } finally {
         setLoading(false);
       }
     })();
@@ -234,7 +233,7 @@ const styles = StyleSheet.create({
     left: 10,
     backgroundColor: 'rgb(255, 111, 0)',
     zIndex: 1,
-    borderRadius: 50,
+    borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
   },

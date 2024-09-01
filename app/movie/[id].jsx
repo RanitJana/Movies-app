@@ -8,7 +8,7 @@ import {
   ActivityIndicator,
   Pressable,
 } from 'react-native';
-import { router, useLocalSearchParams } from 'expo-router';
+import { Link, router, useLocalSearchParams } from 'expo-router';
 import { getMovie, getSimilarMovies } from '@/api/movieApi.js';
 import { getPersons } from '@/api/peopleApi.js';
 import { useEffect, useState } from 'react';
@@ -16,6 +16,7 @@ import { Colors } from '@/constants/Colors.js';
 import { LinearGradient } from 'expo-linear-gradient';
 import ShowComponent from '@/hooks/loading.hooks.jsx';
 import People from '@/components/People.jsx';
+import Production from '@/components/Production.jsx';
 import Entypo from '@expo/vector-icons/Entypo';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
@@ -72,6 +73,15 @@ const MovieOne = () => {
         <Pressable onPress={() => router.replace('/')} style={styles.home}>
           <MaterialCommunityIcons name="home-variant" size={25} color="white" />
         </Pressable>
+        <Link href={`${movie?.homepage}`} style={[styles.link, { zIndex: 3 }]}>
+          <Pressable style={[styles.link, { height: 35 }]}>
+            <MaterialCommunityIcons
+              name="link-variant"
+              size={25}
+              color="white"
+            />
+          </Pressable>
+        </Link>
         <Image
           source={{
             uri: `https://image.tmdb.org/t/p/w500${movie?.poster_path}`,
@@ -84,7 +94,7 @@ const MovieOne = () => {
             width,
             height: height * 1.5,
             position: 'absolute',
-            bottom: height / 2.8,
+            top: -150,
           }}
         />
         <View style={styles.contentContainer}>
@@ -122,14 +132,41 @@ const MovieOne = () => {
             horizontal
             style={styles.castScrollView}
           >
-            {people?.cast.map((person, index) => (
-              <People key={index} people={{ person }} />
-            ))}
+            {(people &&
+              people.cast.length > 0 &&
+              people.cast.map((person, index) => (
+                <People key={index} people={{ person }} />
+              ))) || (
+              <Text style={{ color: 'gray', fontSize: 16 }}>
+                No data is provided
+              </Text>
+            )}
           </ScrollView>
+          <Text style={styles.sectionTitle}>Production Companies</Text>
+          <View style={styles.companParent}>
+            {(movie &&
+              movie.production_companies.length > 0 &&
+              movie.production_companies.map((company, index) => {
+                if (JSON.stringify(company) != '{}')
+                  return <Production key={index} company={{ company }} />;
+              })) || (
+              <Text style={{ color: 'gray', fontSize: 16 }}>
+                No data is provided
+              </Text>
+            )}
+          </View>
           <View style={styles.similarMoviesContainer}>
             {similar.results?.length > 0 && (
               <View style={styles.parentShowAll}>
-                <Text style={styles.listDescriptionText}>Similar movies</Text>
+                <Text style={styles.listDescriptionText}>
+                  <MaterialCommunityIcons
+                    name="square-rounded"
+                    size={24}
+                    color="orange"
+                    style={{ marginRight: 10 }}
+                  />
+                  <Text>Similar movies</Text>
+                </Text>
                 <Pressable onPress={() => router.push(`/all/${id}`)}>
                   <Text style={styles.showAll}>show all</Text>
                 </Pressable>
@@ -284,8 +321,27 @@ const styles = StyleSheet.create({
     left: 20,
     backgroundColor: 'rgb(255, 111, 0)',
     zIndex: 1,
-    borderRadius: 50,
+    borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  link: {
+    width: 35,
+    aspectRatio: 1,
+    position: 'absolute',
+    top: 50,
+    right: 20,
+    backgroundColor: 'rgba(255, 111, 0, 0.15)',
+    zIndex: 1,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  companParent: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    gap: 20,
   },
 });

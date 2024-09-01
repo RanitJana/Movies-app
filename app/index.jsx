@@ -10,12 +10,21 @@ import {
   getTrending,
   getUpcoming,
 } from '../api/movieApi.js';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import ShowComponent from '../hooks/loading.hooks.jsx';
 
 const renderCategory = (title, showAll, data, router) => (
   <View>
     <View style={styles.parentShowAll}>
-      <Text style={styles.listDescriptionText}>{title}</Text>
+      <Text style={styles.listDescriptionText}>
+        <MaterialCommunityIcons
+          name="square-rounded"
+          size={24}
+          color="orange"
+          style={{ marginRight: 10 }}
+        />
+        <Text>{title}</Text>
+      </Text>
       {showAll && (
         <Pressable onPress={() => router?.push(`/all/${title}`)}>
           <Text style={styles.showAll}>show all</Text>
@@ -126,6 +135,7 @@ const styles = StyleSheet.create({
     color: 'orange',
   },
   listDescriptionText: {
+    justifyContent: 'center',
     color: 'white',
     fontSize: 20,
     fontWeight: '900',
