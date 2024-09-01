@@ -47,7 +47,7 @@ const Type = () => {
             : getTopRated(page));
 
       setPage((prev) => prev + 1);
-      maxPage.current = response.total_pages || maxPage.current;
+      maxPage.current = response.total_pages;
 
       response = response.filter((val) => JSON.stringify(val) !== '{}');
       setMovie((prev) => [...prev, ...response]);
