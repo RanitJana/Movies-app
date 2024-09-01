@@ -24,7 +24,11 @@ Preview images
 
 ## Download
 
+Download from below
+
 <img src="./assets/images/preview/download.png" alt="App Screenshot" width="200"/>
+
+<a href="https://expo.dev/accounts/ranitjana/projects/movies/builds/069978c6-5297-4cb1-b673-470930b22109">Download<a>
 
 ## Getting Started
 
