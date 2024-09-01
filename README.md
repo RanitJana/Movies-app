@@ -22,6 +22,9 @@ Preview images
 <img src="./assets/images/preview/13.jpg" alt="App Screenshot" width="200"/>
 <img src="./assets/images/preview/14.jpg" alt="App Screenshot" width="200"/>
 
+## Download
+
+<img src="./assets/images/preview/download.png" alt="App Screenshot" width="200"/>
 
 ## Getting Started
 
