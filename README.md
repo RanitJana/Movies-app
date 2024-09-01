@@ -8,21 +8,21 @@ This is an Android movie app that provides details about movies. It fetches data
 
 Preview images
 
-![App Screenshot](./assets/images/preview/1.jpg)
-![App Screenshot](./assets/images/preview/2.jpg)
-![App Screenshot](./assets/images/preview/3.jpg)
-![App Screenshot](./assets/images/preview/4.jpg)
-![App Screenshot](./assets/images/preview/5.jpg)
-![App Screenshot](./assets/images/preview/6.jpg)
-![App Screenshot](./assets/images/preview/7.jpg)
-![App Screenshot](./assets/images/preview/8.jpg)
-![App Screenshot](./assets/images/preview/9.jpg)
-![App Screenshot](./assets/images/preview/10.jpg)
-![App Screenshot](./assets/images/preview/11.jpg)
-![App Screenshot](./assets/images/preview/12.jpg)
-![App Screenshot](./assets/images/preview/13.jpg)
-![App Screenshot](./assets/images/preview/14.jpg)
-![App Screenshot](./assets/images/preview/)
+<img src="./assets/images/preview/1.jpg" alt="App Screenshot" width="400"/>
+<img src="./assets/images/preview/2.jpg" alt="App Screenshot" width="400"/>
+<img src="./assets/images/preview/3.jpg" alt="App Screenshot" width="400"/>
+<img src="./assets/images/preview/4.jpg" alt="App Screenshot" width="400"/>
+<img src="./assets/images/preview/5.jpg" alt="App Screenshot" width="400"/>
+<img src="./assets/images/preview/6.jpg" alt="App Screenshot" width="400"/>
+<img src="./assets/images/preview/7.jpg" alt="App Screenshot" width="400"/>
+<img src="./assets/images/preview/8.jpg" alt="App Screenshot" width="400"/>
+<img src="./assets/images/preview/9.jpg" alt="App Screenshot" width="400"/>
+<img src="./assets/images/preview/10.jpg" alt="App Screenshot" width="400"/>
+<img src="./assets/images/preview/11.jpg" alt="App Screenshot" width="400"/>
+<img src="./assets/images/preview/12.jpg" alt="App Screenshot" width="400"/>
+<img src="./assets/images/preview/13.jpg" alt="App Screenshot" width="400"/>
+<img src="./assets/images/preview/14.jpg" alt="App Screenshot" width="400"/>
+
 
 ## Getting Started
 
