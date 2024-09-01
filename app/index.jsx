@@ -4,26 +4,38 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useRouter } from 'expo-router';
 import { Colors } from '../constants/Colors.js';
-import { getPopular, getTopRated, getTrending, getUpcoming } from '../api/movieApi.js';
+import {
+  getPopular,
+  getTopRated,
+  getTrending,
+  getUpcoming,
+} from '../api/movieApi.js';
 import ShowComponent from '../hooks/loading.hooks.jsx';
 
 const renderCategory = (title, showAll, data, router) => (
-
   <View>
     <View style={styles.parentShowAll}>
       <Text style={styles.listDescriptionText}>{title}</Text>
-      {showAll && <Pressable onPress={() => router.push(`/all/${title}`)}><Text style={styles.showAll}>show all</Text></Pressable>}
+      {showAll && (
+        <Pressable onPress={() => router?.push(`/all/${title}`)}>
+          <Text style={styles.showAll}>show all</Text>
+        </Pressable>
+      )}
     </View>
-    <ScrollView style={{ marginHorizontal: -20 }} horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.cardContainer}>
+    <ScrollView
+      style={{ marginHorizontal: -20 }}
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      contentContainerStyle={styles.cardContainer}
+    >
       <ShowComponent info={[data.fetching, data.movies]} />
     </ScrollView>
   </View>
 );
 
-export { renderCategory }
+export { renderCategory };
 
 export default function Index() {
-
   const router = useRouter();
 
   const [data, setData] = useState({
@@ -52,14 +64,48 @@ export default function Index() {
   }, []);
 
   return (
-    <SafeAreaView style={[{ flex: 1, padding: 10, paddingHorizontal: 20 }, styles.parent]}>
-      <View style={[{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingBottom: 10 }, styles.parent]}>
+    <SafeAreaView
+      style={[{ flex: 1, padding: 10, paddingHorizontal: 20 }, styles.parent]}
+    >
+      <View
+        style={[
+          {
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            paddingBottom: 10,
+          },
+          styles.parent,
+        ]}
+      >
         <Ionicons name="menu-outline" size={30} color={Colors.dark.text} />
         <View style={{ flexDirection: 'row' }}>
-          <Text style={{ color: Colors.dark.text, fontSize: 30, fontWeight: 'bold', color: 'orange' }}>M</Text>
-          <Text style={{ color: Colors.dark.text, fontSize: 30, fontWeight: 'bold' }}>ovies</Text>
+          <Text
+            style={{
+              color: Colors.dark.text,
+              fontSize: 30,
+              fontWeight: 'bold',
+              color: 'orange',
+            }}
+          >
+            M
+          </Text>
+          <Text
+            style={{
+              color: Colors.dark.text,
+              fontSize: 30,
+              fontWeight: 'bold',
+            }}
+          >
+            ovies
+          </Text>
         </View>
-        <Ionicons name="search-outline" size={30} color={Colors.dark.text} onPress={() => router.push('/search')} />
+        <Ionicons
+          name="search-outline"
+          size={30}
+          color={Colors.dark.text}
+          onPress={() => router.push('/search')}
+        />
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         {renderCategory('Trending', false, data.trending, router)}

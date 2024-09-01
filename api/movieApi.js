@@ -1,177 +1,142 @@
-import axios from "axios";
+import axios from 'axios';
 
-const base = 'https://api.themoviedb.org/3'
+const base = 'https://api.themoviedb.org/3';
 
 let headers = {
-    accept: 'application/json',
-    Authorization: `Bearer ${process.env.EXPO_PUBLIC_MOVIE_KEY}`
-}
+  accept: 'application/json',
+  Authorization: `Bearer ${process.env.EXPO_PUBLIC_MOVIE_KEY}`,
+};
 
 async function getTrending() {
+  let URI = `${base}/trending/movie/day`;
 
-    let URI = `${base}/trending/movie/day`;
+  try {
+    let response = await axios.get(URI, {
+      params: {
+        language: 'en-US',
+      },
+      headers: headers,
+    });
 
-    try {
-
-        let response = await axios.get(URI, {
-            params: {
-                language: 'en-US'
-            },
-            headers: headers
-        })
-
-        return response.data.results;
-
-    } catch (error) {
-
-        console.log(error);
-        return [];
-
-    }
+    return response.data.results;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
 }
 async function getUpcoming(page = 1) {
+  let URI = `${base}/movie/upcoming`;
 
-    let URI = `${base}/movie/upcoming`;
+  try {
+    let response = await axios.get(URI, {
+      params: {
+        language: 'en-US',
+        page: page,
+      },
+      headers: headers,
+    });
 
-    try {
-
-        let response = await axios.get(URI, {
-            params: {
-                language: 'en-US',
-                page: page
-            },
-            headers: headers
-        })
-
-        return response.data.results;
-
-    } catch (error) {
-
-        console.log(error);
-        return [];
-
-    }
+    return response.data.results;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
 }
 async function getTopRated(page = 1) {
+  let URI = `${base}/movie/top_rated`;
 
-    let URI = `${base}/movie/top_rated`;
+  try {
+    let response = await axios.get(URI, {
+      params: {
+        language: 'en-US',
+        page: page,
+      },
+      headers: headers,
+    });
 
-    try {
-
-        let response = await axios.get(URI, {
-            params: {
-                language: 'en-US',
-                page: page
-            },
-            headers: headers
-        })
-
-        return response.data.results;
-
-    } catch (error) {
-
-        console.log(error);
-        return [];
-
-    }
+    return response.data.results;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
 }
 async function getPopular(page = 1) {
+  let URI = `${base}/movie/popular`;
 
-    let URI = `${base}/movie/popular`;
+  try {
+    let response = await axios.get(URI, {
+      params: {
+        language: 'en-US',
+        page: page,
+      },
+      headers: headers,
+    });
 
-    try {
-
-        let response = await axios.get(URI, {
-            params: {
-                language: 'en-US',
-                page: page
-            },
-            headers: headers
-        })
-
-        return response.data.results;
-
-    } catch (error) {
-
-        console.log(error);
-        return [];
-
-    }
+    return response.data.results;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
 }
 async function getMovie(id) {
+  let URI = `${base}/movie/${id}`;
 
-    let URI = `${base}/movie/${id}`;
-
-    try {
-
-        let response = await axios.get(URI, {
-            params: {
-                language: 'en-US'
-            },
-            headers: headers
-        })
-        return response.data;
-
-    } catch (error) {
-
-        console.log(error);
-        return {};
-
-    }
+  try {
+    let response = await axios.get(URI, {
+      params: {
+        language: 'en-US',
+      },
+      headers: headers,
+    });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return {};
+  }
 }
 
 async function getSimilarMovies(id, page = 1) {
+  let URI = `${base}/movie/${id}/similar`;
 
-    let URI = `${base}/movie/${id}/similar`;
-
-    try {
-
-        let response = await axios.get(URI, {
-            params: {
-                language: 'en-US',
-                page: page
-            },
-            headers: headers
-        })
-        return response.data;
-
-    } catch (error) {
-
-        console.log(error);
-        return [];
-
-    }
+  try {
+    let response = await axios.get(URI, {
+      params: {
+        language: 'en-US',
+        page: page,
+      },
+      headers: headers,
+    });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
 }
 
 async function searchMovie(keyword, page = 1) {
+  let URI = `${base}/search/keyword`;
 
-    let URI = `${base}/search/keyword`;
-
-    try {
-
-        let response = await axios.get(URI, {
-            params: {
-                query: keyword,
-                page: page
-            },
-            headers: headers
-        })
-        return response.data;
-
-    } catch (error) {
-
-        console.log(error);
-        return [];
-
-    }
+  try {
+    let response = await axios.get(URI, {
+      params: {
+        query: keyword,
+        page: page,
+      },
+      headers: headers,
+    });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
 }
 
 export {
-    getTrending,
-    getUpcoming,
-    getTopRated,
-    getPopular,
-    getMovie,
-    getSimilarMovies,
-    searchMovie
-}
+  getTrending,
+  getUpcoming,
+  getTopRated,
+  getPopular,
+  getMovie,
+  getSimilarMovies,
+  searchMovie,
+};
